@@ -1,4 +1,4 @@
-package de.viadee.demo;
+package solutions.stein.demo;
 
 import java.util.Arrays;
 import java.util.stream.StreamSupport;

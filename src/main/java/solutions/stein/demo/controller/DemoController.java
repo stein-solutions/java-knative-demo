@@ -1,4 +1,4 @@
-package de.viadee.demo.controller;
+package solutions.stein.demo.controller;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
