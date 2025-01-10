@@ -20,7 +20,7 @@ FROM openjdk:20
 WORKDIR /app
 
 # Copy the native executable into the containers
-COPY --from=builder /build/target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /build/target/*.jar app.jar
 
 # Expose the port your app runs on
 EXPOSE 8080
