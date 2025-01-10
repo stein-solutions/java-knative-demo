@@ -23,7 +23,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          file: dockerfile.native2
+          file: dockerfile.native
           push: true
           tags: | 
             ghcr.io/${{ github.repository_owner }}/java-knative-demo:latest:latest
