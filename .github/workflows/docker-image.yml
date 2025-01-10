@@ -19,4 +19,6 @@ jobs:
         with:
           file: dockerfile.native2
           push: true
-          tags: user/app:latest
+          tags: |     
+            ghcr.io/stein-solutions/java-knative-demo:latest
+            ghcr.io/stein-solutions/java-knative-demo:0.0.1
