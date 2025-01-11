@@ -1,5 +1,5 @@
 # Using Oracle GraalVM for JDK 17
-FROM ghcr.io/graalvm/native-image-community:23 AS builder
+FROM ghcr.io/graalvm/native-image-community:23-muslib AS builder
 
 # Install gzip
 RUN microdnf install gzip

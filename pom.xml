@@ -51,7 +51,8 @@
 				<configuration>
 					<buildArgs combine.children="append">
 						<buildArg>--verbose</buildArg>
-
+						<buildArg>--static</buildArg>
+						<buildArg>--libc=musl</buildArg>
 					</buildArgs>
 				</configuration>
 			</plugin>
