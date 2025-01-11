@@ -14,6 +14,7 @@ COPY . /build
 RUN ./mvnw --no-transfer-progress -e native:compile -Pnative
 
 RUN chmod +x /build/target/demo
+RUN mkdir /tmp2
 
 # The deployment Image
 FROM scratch
@@ -27,6 +28,6 @@ EXPOSE 8080
 
 # Copy the native executable into the containers
 COPY --from=builder /build/target/demo /usr/local/bin/app
-
+COPY --from=builder /tmp2 /tmp
 
 ENTRYPOINT ["/usr/local/bin/app"]
