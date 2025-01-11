@@ -14,16 +14,18 @@ COPY . /build
 RUN ./mvnw --no-transfer-progress -e native:compile -Pnative
 
 # The deployment Image
-FROM alpine
+FROM ubuntu:jammy
 
-# # Install necessary runtime dependencies
-# RUN apk add --no-cache libc6-compat
+# # # Install necessary runtime dependencies
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends libc6 && \
+#     apt-get clean
 
 EXPOSE 8080
 
 # Copy the native executable into the containers
-COPY --from=builder /build/target/demo app
+COPY --from=builder /build/target/demo /usr/local/bin/app
 
-RUN chmod +x /app
+RUN chmod +x /usr/local/bin/app
 
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/usr/local/bin/app"]
