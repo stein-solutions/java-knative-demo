@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: Service
+metadata:
+  labels:
+    name: demo-app-knative-service-monitor
+  name: demo-app-knative-service-monitor
+spec:
+  ports:
+  - name: app-metrics
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    serving.knative.dev/service: demo-app-knative
+  type: ClusterIP
