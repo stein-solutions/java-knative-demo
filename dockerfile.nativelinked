@@ -11,12 +11,13 @@ WORKDIR /build
 COPY . /build
 
 # Build
-RUN ./mvnw --no-transfer-progress -e native:compile -Pnative
+RUN ./mvnw --no-transfer-progress -e native:compile -Pnative,nativelinked
 
 RUN chmod +x /build/target/demo
+RUN mkdir /tmp2
 
 # The deployment Image
-FROM ubuntu:jammy
+FROM scratch
 
 # # # Install necessary runtime dependencies
 # RUN apt-get update && \
@@ -27,5 +28,7 @@ EXPOSE 8080
 
 # Copy the native executable into the containers
 COPY --from=builder /build/target/demo /usr/local/bin/app
+# Spring embedded Tomcat fails to start if /tmp is not present
+COPY --from=builder /tmp2 /tmp 
 
 ENTRYPOINT ["/usr/local/bin/app"]
