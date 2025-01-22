@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,11 +14,19 @@ import jakarta.annotation.PostConstruct;
 public class DemoController {
  
 
-    private long customStartTime;
+    private static long appStartTime = Instant.now().toEpochMilli();
+    private static long timeToInitialization;
+
+    @Value("${K8S_POD_NAMESPACE}")
+    private String namespace;
+
+    @Value("${K8S_POD_NAME}")
+    private String name;
+
 
     @PostConstruct
     public void updateCustomStartTime() {
-        this.customStartTime = Instant.now().getEpochSecond() * 1000;
+        DemoController.timeToInitialization = Instant.now().toEpochMilli();
     }
 
     @GetMapping("/demo/example")
@@ -27,8 +36,21 @@ public class DemoController {
 
     @GetMapping("")
     String halloWelt() {
-        var date = new Date(customStartTime);
+        var date = new Date(DemoController.timeToInitialization);
         var formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return "Hallo Welt! <br /> App started at: " + formatter.format(date);
     }
+
+    @GetMapping("/appStartStats")
+    AppStartStatResponse appStartStats() {
+        var response = new AppStartStatResponse();
+        response.setStartTimestamp(DemoController.appStartTime);
+        response.setInitializedTimestamp(DemoController.timeToInitialization);
+        response.setRequestReceivedTimestamp(Instant.now().toEpochMilli());
+        response.setPodName(name);
+        response.setPodNamespace(namespace);
+        return response;
+    }
+
+    
 }
