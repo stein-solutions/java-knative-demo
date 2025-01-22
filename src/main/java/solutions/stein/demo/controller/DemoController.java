@@ -20,7 +20,7 @@ public class DemoController {
     @Value("${K8S_POD_NAMESPACE}")
     private String namespace;
 
-    @Value("${K8S_POD_NAME}")
+    @Value("${HOSTNAME}")
     private String name;
 
 
