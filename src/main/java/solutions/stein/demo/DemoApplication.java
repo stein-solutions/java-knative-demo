@@ -1,5 +1,7 @@
 package solutions.stein.demo;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +10,8 @@ import jakarta.annotation.PreDestroy;
 @SpringBootApplication
 // @ImportRuntimeHints(DemoApplication.DemoApplicationRuntimeHints.class)
 public class DemoApplication {
+
+	public static long AppStartTime = Instant.now().toEpochMilli();
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);

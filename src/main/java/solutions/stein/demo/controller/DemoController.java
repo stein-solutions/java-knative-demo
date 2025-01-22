@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.PostConstruct;
+import solutions.stein.demo.DemoApplication;
 
 @RestController
 public class DemoController {
  
 
-    private static long appStartTime = Instant.now().toEpochMilli();
+    private static long appStartTime = DemoApplication.AppStartTime;
     private static long timeToInitialization;
 
     @Value("${K8S_POD_NAMESPACE}")

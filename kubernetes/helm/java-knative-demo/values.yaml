@@ -6,7 +6,7 @@ image:
   repository: ghcr.io/stein-solutions/java-knative-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "nativelinked-905f037b9a5c724540eeebc58802d88ebb55c8ca"
+  tag: "nativelinked-ea3c40800f14e290b594b8077c49cbfa347cfc76"
 
 imagePullSecrets: []
 nameOverride: ""
