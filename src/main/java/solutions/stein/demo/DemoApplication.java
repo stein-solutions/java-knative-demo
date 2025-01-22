@@ -16,7 +16,7 @@ import jakarta.annotation.PreDestroy;
 import solutions.stein.demo.controller.AppStartStatResponse;
 
 @SpringBootApplication
-@ImportRuntimeHints(DemoApplication.DemoApplicationRuntimeHints.class)
+// @ImportRuntimeHints(DemoApplication.DemoApplicationRuntimeHints.class)
 public class DemoApplication {
 
 	public static void main(String[] args) {
@@ -32,15 +32,15 @@ public class DemoApplication {
 		this.customMetrics.updateSigtermReceived();
 	}
 
-	static class DemoApplicationRuntimeHints implements RuntimeHintsRegistrar {
-		public void registerHints(@SuppressWarnings("null") RuntimeHints hints, @Nullable ClassLoader classLoader) {
-			hints.reflection().registerType(AppStartStatResponse.class, hint -> 
-				hint.withMembers(
-					MemberCategory.INVOKE_PUBLIC_CONSTRUCTORS,
-					MemberCategory.INVOKE_PUBLIC_METHODS,
-					MemberCategory.INVOKE_DECLARED_METHODS
-				)
-			);
-		}
-    }
+	// static class DemoApplicationRuntimeHints implements RuntimeHintsRegistrar {
+	// 	public void registerHints(@SuppressWarnings("null") RuntimeHints hints, @Nullable ClassLoader classLoader) {
+	// 		hints.reflection().registerType(AppStartStatResponse.class, hint -> 
+	// 			hint.withMembers(
+	// 				MemberCategory.INVOKE_PUBLIC_CONSTRUCTORS,
+	// 				MemberCategory.INVOKE_PUBLIC_METHODS,
+	// 				MemberCategory.INVOKE_DECLARED_METHODS
+	// 			)
+	// 		);
+	// 	}
+    // }
 }
