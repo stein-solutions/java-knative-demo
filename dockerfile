@@ -1,8 +1,5 @@
 # Using Oracle GraalVM for JDK 17
-FROM ghcr.io/graalvm/native-image-community:23 AS builder
-
-# Install gzip
-RUN microdnf install gzip
+FROM openjdk:20 AS builder
 
 # Set the working directory to /home/app
 WORKDIR /build
