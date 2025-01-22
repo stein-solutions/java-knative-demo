@@ -14,8 +14,6 @@ import solutions.stein.demo.DemoApplication;
 @RestController
 public class DemoController {
  
-
-    private static long appStartTime = DemoApplication.AppStartTime;
     private static long timeToInitialization;
 
     @Value("${K8S_POD_NAMESPACE}")
@@ -45,8 +43,8 @@ public class DemoController {
     @GetMapping("/appStartStats")
     AppStartStatResponse appStartStats() {
         var response = new AppStartStatResponse();
-        response.setStartTimestamp(DemoController.appStartTime);
-        response.setInitializedTimestamp(DemoController.timeToInitialization);
+        response.setStartTimestamp(DemoApplication.AppStartTime);
+        response.setInitializedTimestamp(DemoApplication.AppReadyTime);
         response.setRequestReceivedTimestamp(Instant.now().toEpochMilli());
         response.setPodName(name);
         response.setPodNamespace(namespace);
