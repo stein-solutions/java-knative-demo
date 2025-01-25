@@ -44,6 +44,9 @@ public class DemoController {
     AppStartStatResponse appStartStats() {
         var response = new AppStartStatResponse();
         response.setStartTimestamp(DemoApplication.AppStartTime);
+        if (DemoApplication.AppReadyTime == 0) {
+            DemoApplication.AppReadyTime = Instant.now().toEpochMilli();
+        }
         response.setInitializedTimestamp(DemoApplication.AppReadyTime);
         response.setRequestReceivedTimestamp(Instant.now().toEpochMilli());
         response.setPodName(name);
