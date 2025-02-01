@@ -6,7 +6,7 @@ image:
   repository: ghcr.io/stein-solutions/java-knative-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "nativelinked-ea3c40800f14e290b594b8077c49cbfa347cfc76"
+  tag: "nativelinked-f5b208448747baf69e9afe06f0cac1d0b86a265e"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -16,10 +16,10 @@ domain: java-knative-demo.k8s.stein.solutions
 
 resources: 
   requests:
-    memory: "256Mi"
+    memory: "512Mi"
     cpu: "250m"
   limits:
-    memory: "256Mi"
+    memory: "512i"
     cpu: "250m"
   
   # We usually recommend not to specify default resources and to leave this as a conscious
