@@ -29,14 +29,14 @@ jobs:
           push: true
           tags: | 
             ghcr.io/${{ github.repository_owner }}/java-knative-demo:${{ github.sha }}
-      # -
-      #   name: Build and push
-      #   uses: docker/build-push-action@v6
-      #   with:
-      #     file: dockerfile.native
-      #     push: true
-      #     tags: | 
-      #       ghcr.io/${{ github.repository_owner }}/java-knative-demo:native-${{ github.sha }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          file: dockerfile.native
+          push: true
+          tags: | 
+            ghcr.io/${{ github.repository_owner }}/java-knative-demo:native-${{ github.sha }}
       -
         name: Build and push
         uses: docker/build-push-action@v6
